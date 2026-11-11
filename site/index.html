@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hidden Cities</title>
+<meta name="description" content="Places in NASA's 2013 G-LiHT lidar over southern Mexico where ancient Maya mounds cluster densely but no recorded site appears in open site lists.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" integrity="sha384-MinO0mNliZ3vwppuPOUnGa+iq619pfMhLVUXfC4LHwSCvF9H+6P/KO4Q7qBOYV5V" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
+<script>try{const t=localStorage.getItem("hc-theme");if(t&&t!=="auto")document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="intro">
+<header class="top">
+  <a class="brand" href="./"><img src="icon.svg" alt=""><h1>Hidden Cities</h1></a>
+  <nav>
+    <a href="method.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h11a4 4 0 0 1 4 4v10H8a4 4 0 0 1-4-4z"/><path d="M8 9h7M8 13h5"/></svg><span class="lbl">How it works</span></a>
+    <button id="open-settings" title="Settings (⌘,)"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="lbl">Settings</span></button>
+  </nav>
+</header>
+<main>
+  <div id="map" aria-label="Map of lidar strips, recorded sites and candidates">
+    <div class="legend" aria-hidden="true">
+      <span><i class="sw cell"></i>Candidate (area, ~11 km)</span>
+      <span><i class="sw site"></i>Recorded site</span>
+      <span><i class="sw strip"></i>NASA lidar strip</span>
+    </div>
+  </div>
+  <aside>
+    <section class="pane" id="list-pane" aria-live="polite">
+      <p class="lede" id="lede">Loading the lidar results…</p>
+      <p class="sub" id="sub"></p>
+      <div class="stats" id="stats"></div>
+      <div class="note"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+        <div><b>A list of places to check, not discoveries.</b> "Unrecorded" means missing from Wikidata and OpenStreetMap, which list only a fraction of known Maya sites. <a href="method.html#limits">Limits</a></div></div>
+      <h2>Places to check <span class="count" id="cand-count"></span></h2>
+      <ol class="list" id="cand-list"></ol>
+      <h2>Known sites to compare <span class="count" id="site-count"></span></h2>
+      <p class="sub" style="margin-top:-4px">Known cities, used to set the rule. Compare a candidate with these.</p>
+      <ol class="list" id="site-list"></ol>
+    </section>
+    <section class="pane dossier off-right" id="dossier-pane" aria-live="polite"></section>
+  </aside>
+</main>
+<a class="feedback" id="feedback" target="_blank" rel="noopener" href="https://github.com/amalmehta/HiddenCities/issues/new?title=Feedback&body=What%20I%20was%20doing%3A%0A%0AWhat%20I%20expected%3A%0A%0AWhat%20happened%3A">Feedback</a>
+<dialog id="settings" aria-labelledby="settings-title">
+  <h3 id="settings-title">Settings</h3>
+  <div class="field"><label for="theme">Appearance</label>
+    <select id="theme"><option value="auto">Match system</option><option value="light">Light</option><option value="dark">Dark</option></select></div>
+  <div class="field"><label for="show-strips">Show lidar strips</label><input type="checkbox" id="show-strips" checked></div>
+  <div class="field"><label for="show-sites">Show recorded sites<small>Including ones outside the lidar</small></label><input type="checkbox" id="show-sites" checked></div>
+  <div class="field" style="display:block"><b style="font-weight:500">Your data</b>
+    <small>This site stores only the three choices above, in this browser (localStorage). No accounts, cookies or analytics. Map tiles load from OpenFreeMap, which sees your IP address, as any website you load does.</small>
+    <button id="clear-prefs" style="margin-top:8px">Clear saved choices</button></div>
+  <form method="dialog" style="text-align:right;margin-top:16px"><button>Done</button></form>
+</dialog>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" integrity="sha384-SYKAG6cglRMN0RVvhNeBY0r3FYKNOJtznwA0v7B5Vp9tr31xAHsZC0DqkQ/pZDmj" crossorigin="anonymous"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+{
+ "data/raw/sites_osm.json": {
+  "bytes": 97349,
+  "fetched": "2026-11-11",
+  "url": "https://overpass-api.de/api/interpreter (historic=archaeological_site)"
+ },
+ "data/raw/sites_wikidata.json": {
+  "bytes": 282564,
+  "fetched": "2026-11-11",
+  "url": "https://query.wikidata.org/sparql (archaeological site, Q839954 + subclasses)"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Campeche/Campeche/ChiapsCampeche_NFI_l0s473_DEM_1m_v1.tif": {
+  "bytes": 9060980,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Campeche/Campeche/ChiapsCampeche_NFI_l0s473_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Campeche/Campeche/ChiapsCampeche_NFI_l0s474_DEM_1m_v1.tif": {
+  "bytes": 10605565,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Campeche/Campeche/ChiapsCampeche_NFI_l0s474_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Campeche/Campeche/ChiapsCampeche_NFI_l0s475_DEM_1m_v1.tif": {
+  "bytes": 8721485,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Campeche/Campeche/ChiapsCampeche_NFI_l0s475_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Campeche/Campeche/ChiapsCampeche_NFI_l0s476_DEM_1m_v1.tif": {
+  "bytes": 9798146,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Campeche/Campeche/ChiapsCampeche_NFI_l0s476_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Campeche/Campeche/ChiapsCampeche_NFI_l0s477_DEM_1m_v1.tif": {
+  "bytes": 4604638,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Campeche/Campeche/ChiapsCampeche_NFI_l0s477_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l0s427_DEM_1m_v1.tif": {
+  "bytes": 1724922,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l0s427_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l0s428_DEM_1m_v1.tif": {
+  "bytes": 5357640,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l0s428_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l0s429_DEM_1m_v1.tif": {
+  "bytes": 7375265,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l0s429_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l0s430_DEM_1m_v1.tif": {
+  "bytes": 7881541,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l0s430_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l0s431_DEM_1m_v1.tif": {
+  "bytes": 6875121,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l0s431_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l2s467_DEM_1m_v1.tif": {
+  "bytes": 8496416,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l2s467_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l2s468_DEM_1m_v1.tif": {
+  "bytes": 9637768,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l2s468_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l2s469_DEM_1m_v1.tif": {
+  "bytes": 10122528,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l2s469_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l2s470_DEM_1m_v1.tif": {
+  "bytes": 10378558,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l2s470_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l2s471_DEM_1m_v1.tif": {
+  "bytes": 10504724,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_Chiaps1/Chiapas_NFI/Chiapas_NFI/Chiaps1_NFI_l2s471_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_South/South_Glas/South_Glas/South_GLAS_l3s457_DEM_1m_v1.tif": {
+  "bytes": 8906247,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_South/South_Glas/South_Glas/South_GLAS_l3s457_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_South/South_Glas/South_Glas/South_GLAS_l3s458_DEM_1m_v1.tif": {
+  "bytes": 9058291,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_South/South_Glas/South_Glas/South_GLAS_l3s458_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_South/South_Glas/South_Glas/South_GLAS_l3s459_DEM_1m_v1.tif": {
+  "bytes": 9660000,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_South/South_Glas/South_Glas/South_GLAS_l3s459_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_South/South_Glas/South_Glas/South_GLAS_l3s460_DEM_1m_v1.tif": {
+  "bytes": 9455816,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_South/South_Glas/South_Glas/South_GLAS_l3s460_DEM_1m_v1.tif"
+ },
+ "data/raw/tiles/MX13W_Britton/DTM_1m/Yuc_South/South_Glas/South_Glas/South_GLAS_l3s461_DEM_1m_v1.tif": {
+  "bytes": 9345769,
+  "fetched": "2026-11-11",
+  "url": "https://opentopography.s3.sdsc.edu/raster/MX13W_Britton/DTM_1m/Yuc_South/South_Glas/South_Glas/South_GLAS_l3s461_DEM_1m_v1.tif"
+ }
+}

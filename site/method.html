@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How Hidden Cities works</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
+<script>try{const t=localStorage.getItem("hc-theme");if(t&&t!=="auto")document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>body{height:auto}</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./"><img src="icon.svg" alt=""><h1>Hidden Cities</h1></a>
+  <nav><a href="./">← Back to the map</a></nav>
+</header>
+<article class="article">
+  <h1>How it works</h1>
+  <p class="sub" id="result" style="font-size:16px">Loading the current numbers…</p>
+
+  <p>NASA's G-LiHT aircraft flew a laser scanner over southern Mexico in 2013 to measure forest carbon. Lidar (light detection and ranging) times laser pulses to the ground and back. Some pulses slip between the leaves, so the ground under the jungle can be mapped to about 1 m. Ancient Maya houses, platforms and temples still stand as low mounds under the trees, and they show up in that ground map. Hidden Cities finds the mounds, groups them into settlements, and lists the dense ones that no open site list records.</p>
+
+  <h2>Step 1 · Find mounds</h2>
+  <p>Picture pressing a flat board, 61 m across, up against the ground from below. It can't reach into anything narrower than itself, so it skips over a house mound but follows a broad hill or an even slope. The gap between the real ground and the board is the <em>local relief</em>. In image processing this is called a white top-hat.</p>
+  <div class="eq" data-tex="R(\mathbf p) = z(\mathbf p) - \big(\delta_{B_w} \circ \varepsilon_{B_w}\big)(z)(\mathbf p)"></div>
+  <p class="defs"><b>R</b> local relief (m) · <b>z</b> bare-earth ground height (m) · <b>p</b> a 1 m pixel · <b>B<sub>w</sub></b> a square window of side <i>w</i> = 61 m · <b>ε</b> erosion: the lowest value in the window · <b>δ</b> dilation: the highest value in the window. Erosion followed by dilation is an "opening", which is the board.</p>
+  <p>A patch counts as a mound when all three of these hold:</p>
+  <div class="eq" data-tex="R \ge 0.5\,\text{m}, \qquad 50\,\text{m}^2 \le A \le 2500\,\text{m}^2, \qquad \sqrt{\lambda_1/\lambda_2} \le 5"></div>
+  <p class="defs"><b>A</b> footprint area · <b>λ<sub>1</sub> ≥ λ<sub>2</sub></b> the spread of the patch along its long and short axes. A ratio above 5 is long and thin, like a road embankment. These thresholds are <b>invented starting values</b>, not taken from a source.</p>
+  <p>The ground is thinly sampled along the edge of each lidar strip, which makes false bumps, so mounds within 75 m of the edge are ignored. That buffer was added after looking at the first results.</p>
+  <p><b>When it fails:</b> stream banks, gullies, karst knolls and modern earthworks pass too. In a by-eye check of the top 16, about half were natural, and a river meander ranks first.</p>
+
+  <h2>Step 2 · Group mounds into clusters</h2>
+  <p>DBSCAN (density-based clustering) links mounds that lie within a distance <i>ε</i> of each other, through chains of at least 3 neighbours. Think of people at a festival: a crowd is anyone who can reach someone else in the crowd within one step. Lone mounds are left out.</p>
+
+  <h2 id="rule">Step 3 · Set the city rule from known sites</h2>
+  <p>A cluster passes the rule if it has enough mounds and one of them is tall:</p>
+  <div class="eq" data-tex="\text{pass}(C) \iff |C| \ge N \;\text{ and }\; \max_{s \in C} h_s \ge H"></div>
+  <p class="defs"><b>C</b> a cluster · <b>|C|</b> its number of mounds · <b>h<sub>s</sub></b> the height of mound <i>s</i> (m) · <b>N</b>, <b>H</b>, <b>ε</b> fitted, see below.</p>
+  <p>Instead of guessing <i>N</i>, <i>H</i> and <i>ε</i>, we try every combination on a grid. We keep the combinations that still catch at least 90 % of the recorded sites inside the lidar, then pick the one that leaves the fewest places to check:</p>
+  <div class="eq" data-tex="(\varepsilon, N, H)^\star = \arg\min_{\text{recall} \,\ge\, 0.9} \; \frac{100 \cdot \#\text{candidates}}{A_\text{lidar}}, \qquad \text{recall} = \frac{\#\text{recorded sites caught}}{\#\text{recorded sites in the lidar}}"></div>
+  <p class="defs"><b>A<sub>lidar</sub></b> lidar area searched (km²) · A site is <b>caught</b> if a passing cluster has a mound within 300 m of its listed point · <b>candidate</b>: a passing cluster more than 2 km from every recorded site.</p>
+  <p>In plain words: the rule is as strict as it can be while still recognising the cities we already know about. <span id="rule-now"></span></p>
+  <p class="principle">The reusable idea: before you search for the unknown, check that your instrument can see the known, then let the known set your thresholds.</p>
+
+  <h2>Step 4 · Rank, and protect locations</h2>
+  <p>Candidates are ranked by number of mounds, then by tallest mound. Until an archaeologist has looked at a candidate, the map shows only the ~11 km square that contains it (a 0.1° grid cell). Looters use published coordinates.</p>
+
+  <h2 id="limits">What this doesn't show</h2>
+  <ul>
+    <li><b>"Unrecorded" is weak.</b> Wikidata and OpenStreetMap list only a fraction of the thousands of recorded Maya sites. Many candidates are probably known to archaeologists already.</li>
+    <li><b>Few known sites set the rule.</b> <span id="n-sites">Only a handful</span> of recorded sites lie inside the strips, so the 90 % target rests on a small number.</li>
+    <li><b>The strips are narrow</b> (<span id="width">a few hundred</span> m wide), so a cluster is a slice of a settlement, not all of it.</li>
+    <li><b>The mound thresholds are invented</b>, and nothing has been checked on the ground.</li>
+    <li><b>Others have gone further on this same NASA lidar.</b> Estrada-Belli, Canuto, Šprajc and Fernandez-Diaz (2025) modelled settlement over about 95,000 km² and reported a previously unknown large centre in Campeche. Britton, McLellan and Brewer (2025) trained a deep-learning detector across the peninsula. What this project adds is a small pipeline that's open and reproducible, ranking clusters that are missing from open lists.</li>
+  </ul>
+
+  <h2>Data and sources</h2>
+  <table class="t">
+    <tr><th>What</th><th>Source</th><th>Licence</th></tr>
+    <tr><td>Bare-earth lidar, 1 m</td><td>NASA G-LiHT 2013, reprocessed by B. J. Britton · <a href="https://doi.org/10.5069/G9Z899N1">doi:10.5069/G9Z899N1</a> (West), <a href="https://doi.org/10.5069/G9TH8JX9">doi:10.5069/G9TH8JX9</a> (East)</td><td>CC BY 4.0 (OpenTopography)</td></tr>
+    <tr><td>Recorded sites</td><td><a href="https://www.wikidata.org">Wikidata</a> (archaeological site and subclasses) and <a href="https://www.openstreetmap.org">OpenStreetMap</a> (historic=archaeological_site)</td><td>CC0 · ODbL</td></tr>
+    <tr><td>Basemap</td><td><a href="https://openfreemap.org">OpenFreeMap</a> · © OpenMapTiles · © OpenStreetMap contributors</td><td>ODbL</td></tr>
+  </table>
+  <h2>References</h2>
+  <ul>
+    <li>Britton, McLellan & Brewer (2025). Evaluating broadscale deep learning for Maya settlement detection in G-LiHT lidar. <i>J. Archaeol. Method Theory</i> 33:15. <a href="https://link.springer.com/article/10.1007/s10816-025-09741-5">Link</a></li>
+    <li>Estrada-Belli, Canuto, Šprajc & Fernandez-Diaz (2025). New regional-scale Classic Maya population density estimates and settlement distribution models through airborne lidar scanning. <i>J. Archaeol. Sci. Reports</i>. <a href="https://news.tulane.edu/pr/ancient-maya-population-may-have-topped-16-million-tulane-research-shows">Summary</a></li>
+    <li>Auld-Thomas, Canuto et al. (2024). Running out of empty space: environmental lidar and the crowded ancient landscape of Campeche, Mexico. <i>Antiquity</i>. <a href="https://www.smithsonianmag.com/smart-news/found-dataset-reveals-lost-maya-city-hiding-in-plain-sight-beneath-a-mexican-forest-180985354/">Summary</a></li>
+    <li>Canuto et al. (2018). Ancient lowland Maya complexity as revealed by airborne laser scanning of northern Guatemala. <i>Science</i> 361.</li>
+  </ul>
+</article>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script>
+document.querySelectorAll(".eq").forEach(n => { try { katex.render(n.dataset.tex, n, { displayMode: true, throwOnError: false }); } catch (e) { n.textContent = n.dataset.tex; } });
+const fmt = (x, d = 0) => Number(x).toLocaleString("en", { maximumFractionDigits: d, minimumFractionDigits: d });
+fetch("data/summary.json").then(r => r.json()).then(s => {
+  const r = s.rule;
+  document.getElementById("result").textContent =
+    `Current result: ${fmt(s.candidates)} places to check in ${fmt(s.lidar_km2, 0)} km² of lidar (${fmt(s.tiles)} strip segments), ${fmt(r.per_100km2, 1)} per 100 km². ` +
+    (r.eligible ? `The rule catches ${r.caught} of ${r.eligible} recorded sites inside the lidar.` : `No recorded site in the open lists lies inside these strips, so the rule couldn't be fitted and the list is a ranking with no cut-off.`);
+  document.getElementById("rule-now").textContent = r.fallback
+    ? `On this area no rule reached 90 %, so the list falls back to the loosest rule (ε = ${r.eps} m, N = ${r.min_n}, H = ${r.min_h} m) and is a ranking with no cut-off.`
+    : `On the current area it chose ε = ${r.eps} m, N = ${r.min_n} mounds and H = ${r.min_h} m.`;
+  document.getElementById("n-sites").textContent = `Only ${s.recorded_sites_in_lidar}`;
+  if (s.strip_width_m) document.getElementById("width").textContent = `about ${fmt(s.strip_width_m)}`;
+}).catch(() => { document.getElementById("result").textContent = "The current numbers didn't load."; });
+</script>
+</body>
+</html>
