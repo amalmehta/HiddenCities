@@ -464,7 +464,7 @@ OPEN QUESTIONS / ASSUMPTIONS:
 - Round 5: look = map + ranked list, dossier on click; definitions confirmed; Amal agreed many 'finds' are probably known, so the list is a to-check list.
 - Found in the build: the 90% recall rule needs recorded sites INSIDE the strips; the open lists give none in this test area. Next fix, in order of value: (1) Britton's catalog or the Witschey & Brown atlas (emails drafted); (2) hand-digitise site plans from papers whose surveys overlap the strips; (3) scale to all 456 transects, which may catch a few listed points. Until then the ranking has no validated cut-off.
 - Checked by eye (2026-11-11), top 16 candidates, non-expert: the first pass found false mounds along strip edges (thin ground sampling), so the detector now ignores a 75 m edge zone (EDGE_BUFFER_M, decided after looking). On the second pass, ~7/16 are plausible platform groups, ~7 natural (river meander at #1, gullies, hills), 2 unclear. Next: a stream-channel mask, judged on a fresh sample.
-- Open: the dossier picture of an unreviewed candidate could be matched against the public lidar by a determined person; accepted residual risk for now (SYSTEM-DESIGN threat model). Re-check with Amal before promoting the site.
+- Decided at publish (2026-11-11): the dossier picture of an unreviewed candidate could be matched against the public lidar by a determined person. Amal chose to publish the top-40 pictures as is, over hiding strips inside cells, dropping candidate pictures or keeping the repo private. No reason given yet.
 
 CHANGELOG:
 

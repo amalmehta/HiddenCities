@@ -69,7 +69,7 @@ flowchart LR
 | Thresholds fitted on recorded sites | Avoids made-up numbers. The rule is defined by the recall it achieves. | Few recorded sites lie inside thin strips, so the fit rests on a small n. The UI reports that n. |
 | Narrow strips (~390 m, measured) | That's the data. | We see slices of settlements, so "N structures within ε" counts only the part inside the strip. Candidates are dense slices, not whole cities. |
 | Static site, no server | $0, nothing to attack, works offline once loaded. | No live re-analysis in the browser. |
-| Unreviewed candidates snapped to a 0.1° (~11 km) grid cell | Looting risk (decided by Amal, round 2). | Others can't check them without asking. The dossier image could still be matched against the public lidar by a determined person; that residual risk is recorded below. |
+| Unreviewed candidates snapped to a 0.1° (~11 km) grid cell | Looting risk (decided by Amal, round 2). | Others can't check them without asking. The dossier image could still be matched against the public lidar by a determined person; that residual risk was put to Amal and accepted (see below). |
 | OpenFreeMap light/dark vector basemap | No key or sign-up, light and dark styles, attribution shown. (CARTO was tried first; its tiles now answer "API key required".) | Third-party tile requests reveal viewers' IPs to OpenFreeMap. This is stated in Settings. |
 
 ## Threat model (privacy and security)
@@ -77,7 +77,7 @@ flowchart LR
 - **Assets.** The precise locations of unreviewed candidate sites, which looters would want. There is no user data: no accounts, forms, cookies or analytics.
 - **Who could misuse what.**
   - A looter reads `site/data` → unreviewed candidates hold only the grid-cell centre, and exact points are never written to `site/`. A test asserts this.
-  - A looter matches a dossier image against the public lidar → possible, since the source data is public anyway. The marginal help we give is the ~11 km cell. Accepted residual risk; to be re-checked with Amal before going public.
+  - A looter matches a dossier image against the public lidar → possible, since the source data is public anyway. The marginal help we give is the ~11 km cell. Accepted residual risk: Amal chose to publish the top-40 pictures as is (2026-11-11), over hiding strips inside cells or dropping candidate pictures.
   - A tampered data file causes XSS → all text from Wikidata/OSM is inserted with `textContent`, never `innerHTML`, and site names are escaped.
   - A supply-chain attack via the CDN → only pinned versions are used, with Subresource Integrity hashes.
 - **Viewer privacy.** The theme and layer choices are kept in `localStorage` on the viewer's own device. The only third-party requests are basemap tiles (OpenFreeMap) and the CDN for libraries. The feedback link opens a GitHub issue form, and nothing is sent automatically.
