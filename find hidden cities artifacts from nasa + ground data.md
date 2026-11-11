@@ -469,7 +469,8 @@ OPEN QUESTIONS / ASSUMPTIONS:
 CHANGELOG:
 
 - 2026-11-11 — created
-- 2026-11-11 — built v1: pipeline (detect, cluster, calibrate, rank, render), 18 tests, static map site, docs; test area changed to the tiles around the 4 listed sites (none lies strictly inside the strip, so the rule falls back to a ranking)
+- 2026-11-11 — built v1: pipeline (detect, cluster, calibrate, rank, render), 18 tests, static map site, docs; test area changed to the tiles around the 4 listed sites (none lies strictly inside the strip, so the rule falls back to a ranking); added a 75 m strip-edge buffer after a by-eye audit (285 candidates)
+- 2026-11-11 — published: github.com/amalmehta/HiddenCities, live at amalmehta.com/HiddenCities (GitHub Pages); basemap switched from CARTO (now asks for a key) to OpenFreeMap; CI runs the 18 tests on Python 3.12
 - 2026-09-15 — added meta-instruction: built-out applications include a small feedback tab
 - 2026-09-15 — added meta-instruction: no "Claude" attribution in commits, PRs, or branches
 - 2026-09-16 — added meta-instruction: always include a README when adding to GitHub
