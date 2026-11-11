@@ -4,7 +4,7 @@
 
 **Can NASA's forest-carbon lidar point to ancient Maya settlements that no open site list records?** Partly. On a 58 km² test area, a simple, transparent detector finds 2,941 mound-like features. 285 clusters of them lie more than 2 km from any site in Wikidata or OpenStreetMap, and by eye about half of the top 16 look like groups of Maya platforms. The other half are rivers, gullies and hills. But **the open site lists put no recorded site inside the strips**, so the detector can't yet be calibrated against known cities, and the list is a ranked to-check list, not a set of discoveries.
 
-**[Open the map →](https://amalmehta.github.io/HiddenCities/)** · [How it works](https://amalmehta.github.io/HiddenCities/method.html) · [Prompt log](docs/PROMPTS.md)
+**[Open the map →](https://amalmehta.com/HiddenCities/)** · [How it works](https://amalmehta.com/HiddenCities/method.html) · [Prompt log](docs/PROMPTS.md)
 
 ![The Hidden Cities map: lidar strips over southern Mexico, candidate areas as squares, and the ranked list beside it](docs/screenshot.jpg)
 
@@ -21,7 +21,7 @@ This project asks a narrower, open question: **with only public data and a metho
 3. **Set the city rule from known sites.** A grid search over ε, minimum mound count N and tallest mound H keeps the rules that catch ≥ 90 % of recorded sites inside the lidar, then picks the one with the fewest candidates per 100 km².
 4. **Rank and protect.** Clusters more than 2 km from every recorded site are ranked by mound count, then by tallest mound. Unreviewed candidates are published only as a ~11 km grid square, because looters use coordinates.
 
-Equations, with every symbol defined, are on the [method page](https://amalmehta.github.io/HiddenCities/method.html).
+Equations, with every symbol defined, are on the [method page](https://amalmehta.com/HiddenCities/method.html).
 
 ## Results (test area, 2026-11-11)
 
