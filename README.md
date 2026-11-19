@@ -86,3 +86,7 @@ Details: [docs/INSTRUCTIONS.md](docs/INSTRUCTIONS.md) · [docs/SYSTEM-DESIGN.md]
 - Britton, B. J., McLellan, A., & Brewer, J. (2025). Evaluating broadscale deep learning for Maya settlement detection in G-LiHT lidar. *Journal of Archaeological Method and Theory* 33:15.
 - Canuto, M. A., et al. (2018). Ancient lowland Maya complexity as revealed by airborne laser scanning of northern Guatemala. *Science* 361.
 - Estrada-Belli, F., Canuto, M. A., Šprajc, I., & Fernandez-Diaz, J. C. (2025). New regional-scale Classic Maya population density estimates and settlement distribution models through airborne lidar scanning. *Journal of Archaeological Science: Reports*.
+
+## How it was built
+
+How this was built and how it works, with diagrams: [docs/HOW-IT-WAS-BUILT.md](docs/HOW-IT-WAS-BUILT.md)
