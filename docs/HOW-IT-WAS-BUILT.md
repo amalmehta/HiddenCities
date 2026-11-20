@@ -6,7 +6,7 @@ Hidden Cities is a research pipeline and a static website. It searches public NA
 ## Build history
 
 ```mermaid
-flowchart LR
+flowchart TD
   idea["Idea: look at NASA 3D and other data to find lost cities"]
   v1["v1: lidar mound detector, ranked map, docs - 2026-11-11"]
   pics["Decision recorded: publish candidate pictures - 2026-11-11"]
